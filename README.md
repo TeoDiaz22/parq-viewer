@@ -1,30 +1,97 @@
-# React + TypeScript + Vite
+## Prerequisites
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Node.js version: `22.3.0`
+- npm, Yarn, or pnpm installed
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Installation
 
-## Expanding the ESLint configuration
+You can install the project dependencies using npm, Yarn, or pnpm.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+#### Using npm
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```bash
+npm install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+#### Using Yarn
+
+```bash
+yarn install
+```
+
+#### Using pnpm
+
+```bash
+pnpm install
+```
+
+### Running the Development Server
+
+To start the development server, run the following command:
+
+```bash
+npm run dev
+```
+
+Alternatively, if you are using Yarn or pnpm:
+
+```bash
+yarn dev
+```
+
+```bash
+pnpm dev
+```
+
+### Building the Project
+
+To build the project for production, use the following command:
+
+```bash
+npm run build
+```
+
+Alternatively, if you are using Yarn or pnpm:
+
+```bash
+yarn build
+```
+
+```bash
+pnpm build
+```
+
+### Running the Production Build
+
+To preview the production build locally, you can use the following command:
+
+```bash
+npm run preview
+```
+
+Alternatively, if you are using Yarn or pnpm:
+
+```bash
+yarn preview
+```
+
+```bash
+pnpm preview
+```
+
+## Additional Information
+
+- This project uses Vite as the build tool and React for the frontend framework.
+- Make sure your Node.js version matches the specified version (22.3.0) to avoid any compatibility issues.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
+
+For any questions or issues, please contact the development team.
+
+---
