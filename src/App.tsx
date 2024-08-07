@@ -1,34 +1,64 @@
-import { Container } from 'react-bootstrap'
+import { Button, Col, Container, Row } from 'react-bootstrap'
 import { CardData } from './components/CardData'
 import { useEffect, useState } from 'react'
 import useWebSocket from 'react-use-websocket';
-import { isCardObject } from './utils/utils';
+import { ParkingSlots } from './components/ParkingSlots';
+import { WS_SERVER } from './config/config';
 
 export type CardObject = {
   uuid: string,
   content: string,
 }
 
-const urlServer = '';
 
 function App() {
 
   const [cardsReaded, setCardsReaded] = useState<CardObject[]>([]);
+  const [isParkingOccupied, setIsParkingOccupied] = useState(false);
 
-  const { lastJsonMessage, readyState } = useWebSocket(urlServer);
+  const socket = useWebSocket(WS_SERVER, {
+    onMessage: ({ data }) => {
+      console.log('Message:', data);
+      if (data.includes('Puesto')) {
+        data.includes('ocupado') ? setIsParkingOccupied(true) : setIsParkingOccupied(false);
+      };
+      // setCardsReaded(prevCards => [...prevCards, JSON.parse(event.data)]);
+    }
+  });
 
   useEffect(() => {
-    if (lastJsonMessage && isCardObject(lastJsonMessage)) {
-      setCardsReaded(prevCards => [...prevCards, lastJsonMessage]);
+
+    if (socket.lastMessage) {
+      console.log('Card readed:', socket.lastMessage);
     }
-  }, [lastJsonMessage]);
+  }, [socket.lastMessage]);
+
+
+  // useEffect(() => {
+  //   socket.on('card readed', (card: CardObject) => {
+  //     console.log('Card readed:', card);
+  //     setCardsReaded(prevCards => [...prevCards, card]);
+  //   });
+  // }, []);
+
+  const handleClear = () => setCardsReaded([]);
 
   return (
     <Container className='text-center align-content-center w-50'>
-      {cardsReaded.map(card => <CardData key={card.uuid} data={card} />)}
-      {/* <CardData data={{ uuid: 'cb0c1447-ed43-4296-b213-e156322687aa', content: 'Contenido del campo' }} />
-      <CardData data={{ uuid: 'cb0c1447-ed43-4296-b213-e15632dasaaa', content: 'Contenido del campo' }} /> */}
+      <Button className='mb-2' onClick={handleClear}><i className='bi bi-trash mx-1'></i>Limpiar</Button>
+      {/* {cardsReaded.map(card => <CardData key={card.uuid} data={card} />)} */}
+      <Row>
+        <Col>
+          <CardData data={{ uuid: '123', content: 'Test' }} />
+          <CardData data={{ uuid: '123', content: 'Test' }} />
+          <CardData data={{ uuid: '123', content: 'Test' }} />
+        </Col>
+        <Col>
+          <ParkingSlots isOccupied={isParkingOccupied} />
+        </Col>
+      </Row>
     </Container>
+
   )
 }
 
