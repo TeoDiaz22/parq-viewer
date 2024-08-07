@@ -6,8 +6,8 @@ import { ParkingSlots } from './components/ParkingSlots';
 import { WS_SERVER } from './config/config';
 
 export type CardObject = {
-  uuid: string,
-  content: string,
+  uid: string,
+  userName: string,
 }
 
 
@@ -22,36 +22,28 @@ function App() {
       if (data.includes('Puesto')) {
         data.includes('ocupado') ? setIsParkingOccupied(true) : setIsParkingOccupied(false);
       };
-      // setCardsReaded(prevCards => [...prevCards, JSON.parse(event.data)]);
+      if (data.includes('uid')) {
+        setCardsReaded(prevCards => [...prevCards, JSON.parse(data)]);
+      }
     }
   });
 
-  useEffect(() => {
-
-    if (socket.lastMessage) {
-      console.log('Card readed:', socket.lastMessage);
-    }
-  }, [socket.lastMessage]);
-
-
   // useEffect(() => {
-  //   socket.on('card readed', (card: CardObject) => {
-  //     console.log('Card readed:', card);
-  //     setCardsReaded(prevCards => [...prevCards, card]);
-  //   });
-  // }, []);
+
+  //   if (socket.lastMessage) {
+  //     console.log('Card readed:', socket.lastMessage);
+  //   }
+  // }, [socket.lastMessage]);
 
   const handleClear = () => setCardsReaded([]);
 
   return (
     <Container className='text-center align-content-center w-50'>
       <Button className='mb-2' onClick={handleClear}><i className='bi bi-trash mx-1'></i>Limpiar</Button>
-      {/* {cardsReaded.map(card => <CardData key={card.uuid} data={card} />)} */}
       <Row>
         <Col>
-          <CardData data={{ uuid: '123', content: 'Test' }} />
-          <CardData data={{ uuid: '123', content: 'Test' }} />
-          <CardData data={{ uuid: '123', content: 'Test' }} />
+          <CardData data={{ uid: '123', userName: 'Mateo Perez' }} />
+          {cardsReaded.map(card => <CardData key={card.uid} data={card} />)}
         </Col>
         <Col>
           <ParkingSlots isOccupied={isParkingOccupied} />

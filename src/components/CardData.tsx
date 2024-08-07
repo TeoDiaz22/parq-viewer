@@ -13,11 +13,11 @@ export const CardData = ({ data }: CardDataProps) => {
                 <tbody>
                     <tr>
                         <td className='fw-bold'>UID</td>
-                        <td>{data.uuid}</td>
+                        <td>{data.uid}</td>
                     </tr>
                     <tr>
-                        <td className='fw-bold'>Otro campo</td>
-                        <td>{data.content}</td>
+                        <td className='fw-bold'>Nombre de Usuario</td>
+                        <td>{data.userName}</td>
                     </tr>
                 </tbody>
             </Table>
