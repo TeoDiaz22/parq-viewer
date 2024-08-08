@@ -1,3 +1,8 @@
+# ParQ Viewer
+
+ParQ Viewer is an application that allows to display the information read from an **RFID-RC522** module connected to an **Arduino UNO**, which represents the reading of personal cards in a parking lot. Additionally through the readings of an infrared sensor **KY-010** is detected if the parking lot is available or not. All this information reaches the web through web socket communication issued by a **NodeMCU ESP8266**, which acts as server and client.
+
+
 ## Prerequisites
 
 - Node.js version: `22.3.0`
