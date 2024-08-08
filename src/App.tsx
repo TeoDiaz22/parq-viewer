@@ -1,9 +1,10 @@
 import { Button, Col, Container, Row } from 'react-bootstrap'
 import { CardData } from './components/CardData'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import useWebSocket from 'react-use-websocket';
 import { ParkingSlots } from './components/ParkingSlots';
 import { WS_SERVER } from './config/config';
+import { parseCardObject } from './utils/utils';
 
 export type CardObject = {
   uid: string,
@@ -21,19 +22,12 @@ function App() {
       console.log('Message:', data);
       if (data.includes('Puesto')) {
         data.includes('ocupado') ? setIsParkingOccupied(true) : setIsParkingOccupied(false);
-      };
-      if (data.includes('uid')) {
-        setCardsReaded(prevCards => [...prevCards, JSON.parse(data)]);
+      }else{
+        const cardData = parseCardObject(data);
+        setCardsReaded(prevCards => [...prevCards, cardData]);
       }
     }
   });
-
-  // useEffect(() => {
-
-  //   if (socket.lastMessage) {
-  //     console.log('Card readed:', socket.lastMessage);
-  //   }
-  // }, [socket.lastMessage]);
 
   const handleClear = () => setCardsReaded([]);
 
