@@ -33,14 +33,11 @@ function App() {
 
   return (
     <Container className='text-center align-content-center w-50'>
-      <Button className='mb-2' onClick={handleClear}><i className='bi bi-trash mx-1'></i>Limpiar</Button>
+      <Button className='mb-2 sticky-top' size='lg' onClick={handleClear}><i className='bi bi-trash mx-1'></i>Limpiar</Button>
+      <ParkingSlots isOccupied={isParkingOccupied} />
       <Row>
         <Col>
-          <CardData data={{ uid: '123', userName: 'Mateo Perez' }} />
           {cardsReaded.map(card => <CardData key={card.uid} data={card} />)}
-        </Col>
-        <Col>
-          <ParkingSlots isOccupied={isParkingOccupied} />
         </Col>
       </Row>
     </Container>

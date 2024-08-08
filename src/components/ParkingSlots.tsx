@@ -17,7 +17,7 @@ export const ParkingSlots = ({ isOccupied }: ParkingSlotsProps) => {
     }, [isOccupied]);
 
     return (
-        <Button className="sticky-top" size="lg" variant={parkingState ? "danger" : "success"}>
+        <Button className="sticky-top mx-2 mb-2" size="lg" variant={parkingState ? "danger" : "success"}>
             <i className="bi bi-car-front mx-2"></i>
             {parkingState ? PARKING_OCCUPIED : PARKING_FREE}
         </Button>
