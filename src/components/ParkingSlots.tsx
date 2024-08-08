@@ -5,8 +5,8 @@ type ParkingSlotsProps = {
     isOccupied: boolean;
 };
 
-const PARKING_OCCUPIED = 'El parqueadero esta ocupado';
-const PARKING_FREE = 'El parqueadero esta libre';
+const PARKING_OCCUPIED = 'El parqueadero está ocupado';
+const PARKING_FREE = 'El parqueadero está libre';
 
 export const ParkingSlots = ({ isOccupied }: ParkingSlotsProps) => {
 

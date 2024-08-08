@@ -19,6 +19,10 @@ export const CardData = ({ data }: CardDataProps) => {
                         <td className='fw-bold'>Nombre de Usuario</td>
                         <td>{data.userName}</td>
                     </tr>
+                    <tr>
+                        <td className='fw-bold'>Hora de ingreso</td>
+                        <td>{data.enterTime}</td>
+                    </tr>
                 </tbody>
             </Table>
         </Row>

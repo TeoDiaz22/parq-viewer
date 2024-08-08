@@ -9,6 +9,7 @@ import { parseCardObject } from './utils/utils';
 export type CardObject = {
   uid: string,
   userName: string,
+  enterTime: string,
 }
 
 
